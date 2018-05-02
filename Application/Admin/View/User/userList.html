@@ -1,0 +1,199 @@
+<!-- =====================================================
+    Author: Eden
+    Date:   2015-01-12
+    Function:   公共模板文件中定义的block区域，可以在子模板中继承和覆盖
+ ========================================================= -->
+<!-- 继承 公共模板 开始 -->
+<extend name="Public:blank" />
+<!-- 继承 公共模板 结束 -->
+
+<!-- ===================================================== -->
+
+<!-- 顶部CSS文件 开始 -->
+<block name="cssFile">
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap-responsive.min.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/uniform.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/select2.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/matrix-style.css" />
+    <link rel="stylesheet" href="__PUBLIC__/Admin/css/matrix-media.css" />
+    <link href="__PUBLIC__/Admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <style>
+        td.text-center {
+            text-align:center;
+        }
+        a.title-link {
+            color:#0066ff;
+        }
+
+        .pages a,
+        .pages span {
+            display: inline-block;
+            padding: 2px 5px;
+            margin: 0 1px;
+            border: 1px solid #f0f0f0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .pages a,
+        .pages li {
+            display: inline-block;
+            list-style: none;
+            text-decoration: none;
+            color: #58A0D3;
+        }
+
+        .pages a.first,
+        .pages a.prev,
+        .pages a.next,
+        .pages a.end {
+            margin: 0;
+        }
+
+        .pages a:hover {
+            border-color: #50A8E6;
+        }
+
+        .pages span.current {
+            background: #50A8E6;
+            color: #FFF;
+            font-weight: 700;
+            border-color: #50A8E6;
+        }
+
+
+    </style>
+</block>
+<!-- 顶部CSS文件 结束 -->
+
+<!-- ===================================================== -->
+
+<!-- 顶部JS文件 开始 -->
+<block name="topJsFile">
+
+</block>
+<!-- 顶部JS文件 结束 -->
+
+<!-- ===================================================== -->
+<!-- 头部部分 开始 -->
+<block name="publicHead">
+    <div id="breadcrumb">
+        <a href="" title="返回系统主页" class="tip-bottom">
+            <i class="icon-home"></i>
+            管理首页
+            <a href="#" class="current">会员管理</a>
+        </a>
+    </div>
+    <h1 style="margin-top:10px;">会员列表</h1>
+</block>
+<!-- 头部部分 结束 -->
+
+<!-- ===================================================== -->
+
+<!-- 公共Body部分 开始 -->
+<block name="publicBody">
+    <!-- 将主体包含在 .row-fluid 内部 -->
+    <div class="container-fluid">
+        <hr style="margin:0;">
+        <div class="row-fluid">
+            <div class="span12">
+                <div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <form action="" method="get" class="span6">
+
+                               会员名称：  <input type="text" name="username" value="<{$userName}>" style="width:150px;">
+                                <input type="hidden" name="type" value="1">
+                                <input type="submit" id="sub" class="btn btn-primary" style="margin-top:-10px;" placeholder="请输入关键字..." value="提交">
+                            </form>
+                            <a href="<{:U('User/userAdd')}>" class="btn btn-info pull-right"><i class="icon-plus"></i> 添加会员</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-box">
+                    <div class="widget-title">
+                            <!--<span class="icon">-->
+                                 <!--&lt;!&ndash;<input type="checkbox" id="title-checkbox" name="title-checkbox" />&ndash;&gt;-->
+                            <!--</span>-->
+                        <h5>会员列表</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                            <table class="table table-bordered table-striped with-check">
+                                <thead>
+                                <tr>
+                                    <th style="width:5%;">ID</th>
+                                    <th style="width:5%;">会员名称</th>
+                                    <th style="width:10%;">创建时间</th>
+                                    <th style="width:10%;">状态</th>
+                                    <th style="width:10%;">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <foreach name="userList" item="pro">
+                                    <tr>
+                                        <td class="text-center"><{$pro.id}></td>
+                                        <td class="text-center">
+                                          <{$pro.username}>&nbsp;
+                                        </td>
+                                        <td class="text-center"><{$pro.created}></td>
+                                        <td class="text-center">
+                                            <foreach name="label" item="status" key="k" >
+                                                <if condition="$k eq  $pro.status ">
+                                                  <{$status}>
+                                                </if>
+                                            </foreach>
+                                        </td>
+                                        <td class="text-center" >
+                                            <a href="__CONTROLLER__/userAdd/id/<{$pro.id}>" title="编辑" class="btn btn-info btn-mini addShipping" id="<{$pro.id}>">
+                                                <i  class="icon-truck "></i> </a>
+                                            <a  href="__CONTROLLER__/userDelete/id/<{$pro.id}>" title="删除" class="btn btn-danger btn-mini"> <i class="icon-trash"></i> </a>
+                                        </td>
+                                    </tr>
+                                </foreach>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="10">
+
+
+                                        <div class="pages">
+                                            <{$page}>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                </tfoot>
+                            </table>
+                       </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<!-- 公共Body部分 结束 -->
+
+<!-- ===================================================== -->
+
+<!-- js文件模块 开始 -->
+<block name="footJsFile">
+    <script src="__PUBLIC__/Admin/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/jquery.ui.custom.js"></script>
+    <script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/jquery.uniform.js"></script>
+    <script src="__PUBLIC__/Admin/js/select2.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/jquery.dataTables.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/matrix.js"></script>
+    <script src="__PUBLIC__/Admin/js/matrix.tables.js"></script>
+</block>
+<!-- js文件模块 结束 -->
+
+<!-- ===================================================== -->
+
+<!-- 底部JS执行区域 开始 -->
+<block name="footScript">
+
+</block>
+<!-- 底部JS执行区域 结束 -->

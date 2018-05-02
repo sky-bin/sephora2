@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>后台管理系统</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- //////////////////////////////////////////////////////////////////// -->
+        <!-- ///////////////////////// 顶部CSS 文件   /////////////////////////// -->
+        <block name="cssFile">
+            <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap.min.css" />
+            <link rel="stylesheet" href="__PUBLIC__/Admin/css/bootstrap-responsive.min.css" />
+            <link rel="stylesheet" href="__PUBLIC__/Admin/css/fullcalendar.css" />
+            <link rel="stylesheet" href="__PUBLIC__/Admin/css/matrix-style.css" />
+            <link rel="stylesheet" href="__PUBLIC__/Admin/css/matrix-media.css" />
+            <link href="__PUBLIC__/Admin/font-awesome/css/font-awesome.css" rel="stylesheet" />
+            <link rel="stylesheet" href="__PUBLIC__/Admin/css/jquery.gritter.css" />
+        </block>
+        <style>
+            * {
+                font-family:"Hiragino Sans GB","helvetica","microsoft yahei";
+            }
+        </style>
+        <!-- //////////////////////////////////////////////////////////////////// -->
+        <!-- ///////////////////////// 顶部JS 文件 ////////////////////////////// -->
+        <block name="topJsFile"></block>
+        <!-- //////////////////////////////////////////////////////////////////// -->
+        <!-- //////////////////////////////////////////////////////////////////// -->
+    </head>
+<body  class="wysihtml5-supported">
+<!--Header-part-->
+<div id="header">
+  <h1><a href="dashboard.html">Ribbon Admin</a></h1>
+</div>
+<!--close-Header-part--> 
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+        <!--<{:W('TopInfo/userInfo')}>-->
+        <!--<li class="">-->
+            <!--<a title="" href="#">-->
+                <!--<i class="icon icon-cog"></i> -->
+                <!--<span class="text">设置</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li class="">-->
+            <!--<a title="" href="__ROOT__/index.php">-->
+                <!--<i class="icon icon-share-alt"></i>-->
+                <!--<span class="text">前往首页</span>-->
+            <!--</a>-->
+        <!--</li>-->
+        <li class="">
+            <a title="" href="<{:U('User/loginOut')}>">
+                <i class="icon icon-share-alt"></i>
+                <span class="text">退出</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!--close-top-Header-menu-->
+<!--start-top-serch-->
+<div id="search" class="navbar navbar-inverse">
+    <!--<ul class="nav">-->
+        <!--<li>-->
+            <!--<a title="" href="__ROOT__/index.php">-->
+                <!--<i class="icon icon-share-alt"></i>-->
+                <!--<span class="text">退出</span>-->
+            <!--</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+</div>
+<!--close-top-serch-->
+<!--sidebar-menu-->
+<!--sidebar-menu-->
+<div id="sidebar">
+    <a href="#" class="visible-phone"><i class="icon icon-home"></i> 系统后台</a>
+    <ul>
+        <!--<li class="active"><a href="__APP__"><i class="icon icon-home"></i> <span>后台首页</span></a></li>-->
+        <!--<li class="submenu"><a href="###"><i class="icon icon-signal"></i> <span>后台系统管理</span></a>-->
+            <!--<ul>-->
+                <!--<li><a href="<{:U('Administrator/index')}>">系统管理员</a></li>-->
+                <!--<li><a href="<{:U('Email/index')}>">邮件配置</a></li>-->
+                <!--<li><a href="<{:U('Shipping/index')}>">物流管理</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="submenu"><a href="widgets.html"><i class="icon icon-inbox"></i> <span>前台用户管理</span></a>-->
+            <!--<ul>-->
+                <!--<li><a href="<{:U('User/index')}>">会员列表</a></li>-->
+                <!--<li><a href="<{:U('Feedback/index')}>">用户留言</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <li class="submenu"><a href="widgets.html"><i class="icon icon-shopping-cart"></i> <span>会员管理</span></a>
+            <ul>
+                <li><a href="<{:U('User/userList')}>">会员列表</a></li>
+                <!--<li><a href="<{:U('Product/productAdd')}>">添加商品</a></li>-->
+                <!--<li><a href="<{:U('Product/productCats')}>">商品分类</a></li>-->
+                <!--<li><a href="<{:U('Product/productRecycle')}>">商品回收站</a></li>-->
+            </ul>
+        </li>
+        <!--<li class="submenu"><a href="tables.html"><i class="icon icon-th"></i> <span>订单详情</span></a>-->
+            <!--<ul>-->
+                <!--<li><a href="<{:U('OrderInfo/index')}>">订单列表</a></li>-->
+                <!--<li><a href="<{:U('OrderInfo/invalidOrder')}>">无效订单</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="submenu"><a href="grid.html"><i class="icon icon-fullscreen"></i><span>链接管理</span></a>-->
+            <!--<ul>-->
+                <!--<li><a href="<{:U('AdvPosition/advManager')}>">广告管理</a></li>-->
+                <!--<li><a href="<{:U('Links/linksmanager')}>">友情链接</a></li>-->
+            <!--</ul>-->
+        </li>
+        <!--<li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>售后管理</span> <span class="label label-important"></span></a>-->
+            <!--<ul>-->
+                <!--<li><a href="<{:U('SaleService/returnProduct')}>">退货商品</a></li>-->
+                <!--<li><a href="<{:U('SaleService/changeProduct')}>">换货商品</a></li>-->
+                <!--<li><a href="<{:U('SaleService/repareProduct')}>">维修商品</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="submenu"><a href="buttons.html"><i class="icon icon-tint"></i> <span>新闻管理</span></a>-->
+            <!--<ul>-->
+                <!--<li><a href="<{:U('News/newsManager')}>">新闻管理</a></li>-->
+                <!--<li><a href="<{:U('News/categoryList')}>">新闻分类管理</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+        <!--<li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>网站工具</span> <span class="label label-important"></span></a>-->
+            <!--<ul>-->
+                <!--<li><a href="<{:U('Log/index')}>">后台日志</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+
+        <!--<li class="content"> <span>Monthly Bandwidth Transfer</span>-->
+            <!--<div class="progress progress-mini progress-danger active progress-striped">-->
+                <!--<div style="width: 77%;" class="bar"></div>-->
+            <!--</div>-->
+            <!--<span class="percent">77%</span>-->
+            <!--<div class="stat">21419.94 / 14000 MB</div>-->
+        <!--</li>-->
+        <!--<li class="content"> <span>Disk Space Usage</span>-->
+            <!--<div class="progress progress-mini active progress-striped">-->
+                <!--<div style="width: 87%;" class="bar"></div>-->
+            <!--</div>-->
+            <!--<span class="percent">87%</span>-->
+            <!--<div class="stat">604.44 / 4000 MB</div>-->
+        <!--</li>-->
+    </ul>
+</div>
+<!--sidebar-menu-->
+
+<!--sidebar-menu-->
+
+<!--main-container-part-->
+<div id="content">
+    <!--当前地址 开始-->
+    <div id="content-header">
+        <!-- ////////////////////////////////////////////////////////// -->
+        <!-- ///////////////////// 顶部导航 开始   //////////////////// -->
+        <block name="publicHead">
+            
+        </block>
+        <!-- ////////////////////// 顶部导航 结束   /////////////////// -->
+        <!-- ////////////////////////////////////////////////////////// -->
+    </div>
+    <!--当前地址 结束-->
+
+    <!-- ////////////////////////////////////////////////////////// -->
+    <!-- ///////////////////// 页面主体 开始   //////////////////// -->
+    <block name="publicBody">
+        
+    </block>
+    <!-- ////////////////////// 页面主体 结束   /////////////////// -->
+    <!-- ////////////////////////////////////////////////////////// -->
+    
+</div>
+<!--end-main-container-part-->
+
+<!--Footer-part-->
+<div class="row-fluid">
+    <div id="footer" class="span12"> 2015 &copy; Ribbon By <i>Hello World</i> Team <a href="http://www.tubu8.cn">Themedesigner.in</a> </div>
+</div>
+
+<!--end-Footer-part-->
+<!-- ////////////////////////////////////////////////////////// -->
+<!-- ///////////////////// 底部JS文件 开始   //////////////////// -->
+<block name="footJsFile">
+    <script src="__PUBLIC__/Admin/js/excanvas.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.ui.custom.js"></script> 
+    <script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.flot.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.flot.resize.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.peity.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/fullcalendar.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/matrix.js"></script> 
+    <script src="__PUBLIC__/Admin/js/matrix.dashboard.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.gritter.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/matrix.interface.js"></script> 
+    <script src="__PUBLIC__/Admin/js/matrix.chat.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.validate.js"></script> 
+    <script src="__PUBLIC__/Admin/js/matrix.form_validation.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.wizard.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.uniform.js"></script> 
+    <script src="__PUBLIC__/Admin/js/select2.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/matrix.popover.js"></script> 
+    <script src="__PUBLIC__/Admin/js/jquery.dataTables.min.js"></script> 
+    <script src="__PUBLIC__/Admin/js/matrix.tables.js"></script> 
+</block>
+<!-- ///////////////////// 底部JS文件 结束   //////////////////// -->
+<!-- ////////////////////////////////////////////////////////// -->
+
+<!-- 底部JS脚本 -->
+<!-- ////////////////////////////////////////////////////////// -->
+<!-- ///////////////////// 底部JS脚本 开始   //////////////////// -->
+<block name="footScript">
+    <script type="text/javascript">
+      // This function is called from the pop-up menus to transfer to
+      // a different page. Ignore if the value returned is a null string:
+      function goPage (newURL) {
+
+          // if url is empty, skip the menu dividers and reset the menu selection to default
+          if (newURL != "") {
+          
+              // if url is "-", it is this page -- reset the menu:
+              if (newURL == "-" ) {
+                  resetMenu();            
+              } 
+              // else, send page to designated URL            
+              else {  
+                document.location.href = newURL;
+              }
+          }
+      }
+
+    // resets the menu selection upon entry to this page:
+    function resetMenu() {
+       document.gomenu.selector.selectedIndex = 2;
+    }
+    </script>
+</block>
+<!-- 底部JS脚本 -->
+<!-- ///////////////////// 底部JS脚本 开始   //////////////////// -->
+<!-- ////////////////////////////////////////////////////////// -->
+</body>
+</html>
